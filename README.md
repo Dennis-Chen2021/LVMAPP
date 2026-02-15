@@ -14,7 +14,7 @@
 
 ### 1. 克隆项目
 ```bash
-git clone https://github.com/Dennis-Chen2021/LLMAPP.git
+git clone https://github.com/Dennis-Chen2021/LVMAPP.git
 cd LLMAPP
 ```
 

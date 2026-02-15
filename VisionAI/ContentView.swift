@@ -489,9 +489,6 @@ struct ContentView: View {
         isProcessing = true
         
         Task {
-            // 确保任务结束时重置状态
-            defer { isProcessing = false }
-            
             do {
                 // 1. 异步拍照 (等待相机返回图片)
                 let image = try await cameraManager.capturePhoto()
@@ -512,21 +509,23 @@ struct ContentView: View {
                             image: image
                         ))
                     }
+                    isProcessing = false
                 }
             } catch {
                 print("Capture or Analysis Error: \(error)")
                 await MainActor.run {
-                     withAnimation(.spring(response: 0.4)) {
+                    withAnimation(.spring(response: 0.4)) {
                         let errorMsg = "❌ 发生错误: \(error.localizedDescription)"
                         // 避免重复添加相同的错误信息
                         if descriptions.last?.text != errorMsg {
                             descriptions.append(DescriptionEntry(
                                 timestamp: Date(),
                                 text: errorMsg,
-                                image: nil // 失败时不显示图片，或者显示 lastCapturedImage (取决于是否拍照成功)
+                                image: nil // 失败时不显示图片
                             ))
                         }
                     }
+                    isProcessing = false
                 }
             }
         }
@@ -557,7 +556,7 @@ struct ContentView: View {
     }
 }
 
-// MARK: - Control Button
+// MARK: - Control Button UI
 
 struct ControlButton: View {
     let icon: String
@@ -594,7 +593,7 @@ struct ControlButton: View {
     }
 }
 
-// MARK: - Description Card
+// MARK: - Description Card UI
 
 struct DescriptionCard: View {
     let entry: DescriptionEntry
@@ -628,8 +627,8 @@ struct DescriptionCard: View {
                 Image(uiImage: img)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(maxHeight: 150)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                    .frame(maxHeight: 200) // 稍微调大一点
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
                     .transition(.scale.combined(with: .opacity))
             }
 

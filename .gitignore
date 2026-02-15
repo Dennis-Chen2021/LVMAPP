@@ -1,9 +1,10 @@
-# 模型文件 - 太大不适合放在 Git 上
-VisionAI/QwenVLModel/
+# 模型大文件 - 需要用户手动下载
+VisionAI/QwenVLModel/model.safetensors
+VisionAI/QwenVLModel/.cache/
 
 # macOS 系统文件
 .DS_Store
-*/.DS_Store
+**/.DS_Store
 
 # Xcode
 build/
@@ -11,6 +12,7 @@ DerivedData/
 *.xcuserdata
 *.xcworkspace/xcuserdata/
 xcuserdata/
+*.xcuserstate
 
 # Swift Package Manager
 .build/

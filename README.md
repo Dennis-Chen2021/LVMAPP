@@ -15,7 +15,7 @@
 ### 1. 克隆项目
 ```bash
 git clone https://github.com/Dennis-Chen2021/LVMAPP.git
-cd LLMAPP
+cd LVMAPP
 ```
 
 ### 2. 下载模型文件
@@ -29,7 +29,7 @@ cd LLMAPP
 pip install huggingface-hub
 
 # 2. 下载模型权重文件到项目的 QwenVLModel 目录
-huggingface-cli download mlx-community/Qwen2.5-VL-3B-Instruct-4bit \
+huggingface-cli download mlx-community/Qwen2.5-VL-3B-Instruct-abliterated-4bit \
   model.safetensors \
   --local-dir VisionAI/QwenVLModel
 ```
@@ -40,7 +40,7 @@ huggingface-cli download mlx-community/Qwen2.5-VL-3B-Instruct-4bit \
 from huggingface_hub import hf_hub_download
 
 hf_hub_download(
-    repo_id="mlx-community/Qwen2.5-VL-3B-Instruct-4bit",
+    repo_id="mlx-community/Qwen2.5-VL-3B-Instruct-abliterated-4bit",
     filename="model.safetensors",
     local_dir="VisionAI/QwenVLModel"
 )
@@ -48,7 +48,7 @@ hf_hub_download(
 
 #### 方法三：手动下载
 
-1. 访问 Hugging Face 模型页面：[mlx-community/Qwen2.5-VL-3B-Instruct-4bit](https://huggingface.co/mlx-community/Qwen2.5-VL-3B-Instruct-4bit)
+1. 访问 Hugging Face 模型页面：[mlx-community/Qwen2.5-VL-3B-Instruct-abliterated-4bit](https://huggingface.co/mlx-community/Qwen2.5-VL-3B-Instruct-abliterated-4bit)
 2. 下载 `model.safetensors` 文件
 3. 将文件放到项目的 `VisionAI/QwenVLModel/` 目录下
 

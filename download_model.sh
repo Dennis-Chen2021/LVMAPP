@@ -4,7 +4,8 @@ set -e
 # Configuration
 MODEL_DIR="VisionAI/QwenVLModel"
 MODEL_FILE="model.safetensors"
-REPO_ID="mlx-community/Qwen2.5-VL-3B-Instruct-4bit"
+# Matches the model ID in VisionAI/Models.swift
+REPO_ID="mlx-community/Qwen2.5-VL-3B-Instruct-abliterated-4bit"
 
 # Check if pip is installed
 if ! command -v pip &> /dev/null; then
